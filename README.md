@@ -12,4 +12,4 @@ Chaque module : cours interactif, exercices auto-corrigés (ordre des lignes lib
 Leckerli One (licence OFL) et Cinnamon Cake : vérifier la licence de cette dernière avant toute diffusion large.
 
 ## Contenu
-Les références légales et fiscales des encadrés « Niveau GCF » sont à contrôler avant usage professionnel.
+Les références légales et fiscales des encadrés jaunes sont à contrôler avant usage professionnel.

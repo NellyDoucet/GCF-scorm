@@ -1,4 +1,4 @@
-/* Module SCORM « L'affectation du résultat » — niveau GCF (bac +2) */
+/* Module SCORM « L'affectation du résultat » */
 (function () {
   "use strict";
   var PASS = 70, MOD_ID = "affectation";
@@ -9,7 +9,7 @@
     opts.forEach(function (o, i) { h += '<button class="btn alt" data-act="mini" data-i="' + i + '">' + o + "</button>"; });
     return h + '</div><div class="ex" aria-live="polite" data-ex="' + E.esc(expl) + '"></div></div>';
   }
-  function gcf(t, body) { return '<div class="card gcf"><span class="badge">Niveau GCF</span><strong>' + t + "</strong>" + body + "</div>"; }
+  function gcf(t, body) { return '<div class="card gcf"><strong>' + t + "</strong>" + body + "</div>"; }
   function tabs(group, items) {
     var h = '<div class="tabs" role="tablist">';
     items.forEach(function (it, i) { h += '<button role="tab" aria-selected="' + (i === 0) + '" data-act="tab" data-g="' + group + '" data-i="' + i + '">' + it.t + "</button>"; });
@@ -37,7 +37,6 @@
       '<div class="grid"><div class="sticker"><strong>Durée</strong><br>environ 1 h 30</div>' +
       '<div class="sticker"><strong>Parcours</strong><br>10 étapes, dans l\'ordre ou à la carte</div>' +
       '<div class="sticker"><strong>Validation</strong><br>quiz final, réussite à partir de ' + PASS + ' %</div></div>' +
-      gcf("Les encadrés jaunes pointillés", "<p>Ils ajoutent ce qui dépasse le niveau bac : droit des sociétés, fiscalité, cas plus complexes. C\'est ce qui est attendu d\'un gestionnaire comptable et fiscal.</p>") +
       '<div class="card"><strong>Comment s\'entraîner ?</strong> Les exercices se corrigent tout seuls. Pour les écritures, l\'<strong>ordre de vos lignes n\'a pas d\'importance</strong>. Vous pouvez aussi déposer votre fichier Excel pour le faire corriger.</div>';
   } });
 
@@ -192,20 +191,20 @@
 
   S.push({ t: "Cas d'entraînement", r: function () {
     function box(id, intro, ex) { return intro + E.exerciseHTML(id, ex); }
-    return '<h2>Entraînez-vous sur des cas complets</h2><p>Quatre cas de difficulté croissante. Les cas C et D sont de <strong>niveau GCF</strong>.</p>' +
+    return '<h2>Entraînez-vous sur des cas complets</h2><p>Quatre cas de difficulté croissante. Les cas C et D sont les plus complets.</p>' +
       tabs("cas", [
         { t: "A · Lise Tailor (SAS)", h: box("cA",
           '<div class="card"><strong>Application 2.</strong> SAS, capital <strong>50 000 €</strong> (5 000 actions). Réserve légale avant affectation : <strong>3 500 €</strong>. Report à nouveau <strong>débiteur</strong> : −1 200 €. Résultat N : <strong>124 600 €</strong>. Pas de réserve statutaire. AGO du 30/06/N+1 : réserve facultative de <strong>20 000 €</strong> et dividende de <strong>1,80 € par action</strong>.</div>', DATA.A) },
         { t: "B · SETAK (SAS)", h: box("cB",
           '<div class="card"><strong>TP.</strong> SAS SETAK, capital <strong>40 000 €</strong> en 4 000 parts, associée unique : la holding AEL. Résultat 2023 : <strong>134 600 €</strong>. Report à nouveau créditeur : <strong>15 000 €</strong>. Réserve légale antérieure : <strong>2 000 €</strong>. AGO du 30/06/2024 : réserve légale par prélèvement de 5 %, réserve facultative de <strong>10 000 €</strong>, dividende de <strong>15 € par part</strong>, solde en report à nouveau. Le compte courant d\'associé est créditeur de <strong>47 300 €</strong>, rémunéré à <strong>3,85 %</strong> (année pleine, sans mouvement). Dividendes payés le 17/07/2024, intérêts le 15/07/2024.</div>', DATA.B) },
-        { t: "C · SA Duke (GCF)", h: box("cC",
-          '<div class="card gcf"><span class="badge">Niveau GCF</span><strong>Application 2 bis.</strong> SA DUKE, capital <strong>6 000 000 €</strong> en 20 000 actions de 300 €. Bénéfice de l\'exercice clos le 31/12/2022 : <strong>632 720 €</strong>. Réserve légale avant répartition : <strong>450 000 €</strong>. Report à nouveau <strong>débiteur</strong> : <strong>14 720 €</strong>. Réserve statutaire avant répartition : <strong>125 000 €</strong>.<br>Article 7 des statuts : « sur les bénéfices après prise en compte d\'un report à nouveau, il sera prélevé la réserve légale, une dotation à la réserve statutaire de 50 000 €, une réserve facultative par décision de l\'AGO ; le solde sera reporté à nouveau ».<br>L\'AGO du 30/06/2023 porte <strong>50 000 €</strong> en réserve facultative ; le dividende net doit être de <strong>24 € par action</strong>.</div>', DATA.C) },
-        { t: "D · SARL Delon (GCF)", h: box("cD",
-          '<div class="card gcf"><span class="badge">Niveau GCF</span><strong>Application 1.</strong> SARL Delon peinture au 31/12/2022. Capital <strong>300 000 €</strong> (nominal 300 €). Réserve légale <strong>18 000 €</strong>, réserve facultative <strong>23 000 €</strong>, report à nouveau créditeur <strong>2 600 €</strong>, résultat <strong>56 000 €</strong>.<br>Statuts, art. 11 : « après affectation à la réserve légale, il sera prélevé sur le solde 3 % du capital social, porté en réserve statutaire. Le solde, après affectation à la réserve facultative, sera attribué aux associés à titre de superdividende ».<br>L\'AGO du 08/06/2023 : dotation à la réserve facultative de <strong>12 000 €</strong> ; superdividende unitaire arrondi à l\'euro inférieur.</div>', DATA.D) }
+        { t: "C · SA Duke", h: box("cC",
+          '<div class="card gcf"><strong>Application 2 bis.</strong> SA DUKE, capital <strong>6 000 000 €</strong> en 20 000 actions de 300 €. Bénéfice de l\'exercice clos le 31/12/2022 : <strong>632 720 €</strong>. Réserve légale avant répartition : <strong>450 000 €</strong>. Report à nouveau <strong>débiteur</strong> : <strong>14 720 €</strong>. Réserve statutaire avant répartition : <strong>125 000 €</strong>.<br>Article 7 des statuts : « sur les bénéfices après prise en compte d\'un report à nouveau, il sera prélevé la réserve légale, une dotation à la réserve statutaire de 50 000 €, une réserve facultative par décision de l\'AGO ; le solde sera reporté à nouveau ».<br>L\'AGO du 30/06/2023 porte <strong>50 000 €</strong> en réserve facultative ; le dividende net doit être de <strong>24 € par action</strong>.</div>', DATA.C) },
+        { t: "D · SARL Delon", h: box("cD",
+          '<div class="card gcf"><strong>Application 1.</strong> SARL Delon peinture au 31/12/2022. Capital <strong>300 000 €</strong> (nominal 300 €). Réserve légale <strong>18 000 €</strong>, réserve facultative <strong>23 000 €</strong>, report à nouveau créditeur <strong>2 600 €</strong>, résultat <strong>56 000 €</strong>.<br>Statuts, art. 11 : « après affectation à la réserve légale, il sera prélevé sur le solde 3 % du capital social, porté en réserve statutaire. Le solde, après affectation à la réserve facultative, sera attribué aux associés à titre de superdividende ».<br>L\'AGO du 08/06/2023 : dotation à la réserve facultative de <strong>12 000 €</strong> ; superdividende unitaire arrondi à l\'euro inférieur.</div>', DATA.D) }
       ]);
   } });
 
-  S.push({ t: "Aller plus loin (GCF)", r: function () {
+  S.push({ t: "Aller plus loin", r: function () {
     return '<h2>Aller plus loin : le regard du gestionnaire comptable et fiscal</h2>' +
       gcf("Dividendes versés à une personne physique", "<p>Les dividendes sont imposés au <strong>prélèvement forfaitaire unique</strong> (12,8 % d'impôt sur le revenu + prélèvements sociaux), ou, sur option globale, au <strong>barème progressif</strong> après un abattement de 40 %. Le taux des prélèvements sociaux a évolué : vérifiez-le pour l'année concernée avant de calculer.</p>") +
       gcf("Dividendes versés à une société (régime mère-fille)", "<p>Si la mère détient au moins <strong>5 %</strong> du capital de la filiale, depuis 2 ans (ou s'engage à les conserver), le dividende est <strong>exonéré d'IS</strong>, sauf une <strong>quote-part de frais et charges de 5 %</strong> réintégrée extra-comptablement (art. 145 et 216 du CGI). C'est le cas de la holding AEL, associée unique de SETAK.</p>") +

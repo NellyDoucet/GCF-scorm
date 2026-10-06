@@ -86,7 +86,7 @@ var DATA = (function () {
     ]
   };
 
-  /* ===== Cas C : SA DUKE — Application 2 bis (niveau GCF) ===== */
+  /* ===== Cas C : SA DUKE — Application 2 bis ===== */
   var C = {
     fields: [
       { label: "Base de calcul de la réserve légale", v: 618000, hint: "Bénéfice 632 720 − report à nouveau débiteur 14 720", hl: 1 },
@@ -112,7 +112,7 @@ var DATA = (function () {
     ]
   };
 
-  /* ===== Cas D : SARL DELON — Application 1 (niveau GCF) ===== */
+  /* ===== Cas D : SARL DELON — Application 1 ===== */
   var D = {
     fields: [
       { label: "Nombre de parts (300 000 ÷ 300 €)", v: 1000 },
@@ -157,11 +157,11 @@ var DATA = (function () {
       e: "Bénéfice après impôt, après imputation des pertes antérieures, moins les réserves obligatoires (légale, statutaire), plus le report à nouveau créditeur." },
     { q: "Vrai ou faux : la rémunération du compte courant d'associé se prélève sur le bénéfice distribuable.", o: ["Vrai", "Faux : c'est une charge financière (compte 6615), pas une affectation"], a: 1,
       e: "Les intérêts de compte courant sont une charge de l'exercice (661500 / banque ou 455). Ils ne passent pas par la répartition du bénéfice." },
-    { q: "Niveau GCF — Une société distribue un dividende alors que ses comptes ne dégagent aucun bénéfice distribuable. De quoi s'agit-il ?", o: ["D'un dividende exceptionnel, parfaitement licite", "D'un dividende fictif : irrégulier et pénalement sanctionné pour les dirigeants", "D'un acompte sur dividende", "D'une réduction de capital"], a: 1,
+    { q: "Une société distribue un dividende alors que ses comptes ne dégagent aucun bénéfice distribuable. De quoi s'agit-il ?", o: ["D'un dividende exceptionnel, parfaitement licite", "D'un dividende fictif : irrégulier et pénalement sanctionné pour les dirigeants", "D'un acompte sur dividende", "D'une réduction de capital"], a: 1,
       e: "Distribuer sans bénéfice distribuable est un dividende fictif (délit pour les dirigeants, art. L241-3 et L242-6 du Code de commerce). Les sommes pourront être réclamées aux associés." },
-    { q: "Niveau GCF — Statuts de la SA Delec 2000 : « premier dividende de 5 % du capital ». Capital 7 500 000 €. Quel premier dividende ?", o: ["150 000 €", "375 000 €", "750 000 €", "395 000 €"], a: 1,
+    { q: "Statuts de la SA Delec 2000 : « premier dividende de 5 % du capital ». Capital 7 500 000 €. Quel premier dividende ?", o: ["150 000 €", "375 000 €", "750 000 €", "395 000 €"], a: 1,
       e: "5 % × 7 500 000 = 375 000 €. Le reliquat (970 000 − 200 000 − 375 000 = 395 000 €) reste à la disposition de l'AGO : superdividende, réserves ou report." },
-    { q: "Niveau GCF — La holding AEL, actionnaire unique à 100 %, reçoit les dividendes de SETAK (SAS). Quel régime fiscal s'applique en principe côté holding ?", o: ["Imposition normale de la totalité à l'IS", "Régime mère-fille : dividende exonéré, sauf quote-part de frais et charges de 5 % réintégrée", "Exonération totale sans aucun retraitement", "Imposition à 30 % (PFU)"], a: 1,
+    { q: "La holding AEL, actionnaire unique à 100 %, reçoit les dividendes de SETAK (SAS). Quel régime fiscal s'applique en principe côté holding ?", o: ["Imposition normale de la totalité à l'IS", "Régime mère-fille : dividende exonéré, sauf quote-part de frais et charges de 5 % réintégrée", "Exonération totale sans aucun retraitement", "Imposition à 30 % (PFU)"], a: 1,
       e: "Participation d'au moins 5 % détenue depuis 2 ans (ou engagement de conservation) : exonération d'IS, avec réintégration extra-comptable d'une quote-part de frais et charges de 5 % du dividende (art. 145 et 216 du CGI)." }
   ];
 
