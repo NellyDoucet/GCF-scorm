@@ -84,9 +84,41 @@ var E = (function () {
       '<p class="small">Pour les écritures, gardez des colonnes titrées « Débit » et « Crédit » et le numéro de compte à gauche.</p>' +
       '<div id="' + id + '_up" aria-live="polite"></div></div>';
   }
+  var docs = {};   // id -> {file, label} : énoncé Word à télécharger
+  function downloadHTML(id) {
+    var d = docs[id];
+    return '<div class="upl"><strong>Travailler hors du module ?</strong> Téléchargez l\'énoncé et une trame Excel vierge, puis déposez votre fichier rempli plus bas.' +
+      '<div class="row" style="margin-top:8px">' +
+      (d ? '<a class="btn alt" href="assets/enonces/' + d + '" download>⬇ Énoncé (Word)</a>' : "") +
+      '<button class="btn alt" data-act="trame" data-ex="' + id + '">⬇ Trame Excel vierge</button></div></div>';
+  }
+  function plain(s) { return String(s).replace(/<[^>]+>/g, ""); }
+  function trame(id) {
+    var ex = reg[id];
+    if (typeof XLSX === "undefined") { alert("La génération Excel n'est pas disponible."); return; }
+    var wb = XLSX.utils.book_new();
+    if (ex.fields && ex.fields.length) {
+      var rows = [["Éléments", "Montant"]];
+      ex.fields.forEach(function (f) { rows.push([plain(f.label), ""]); });
+      var ws = XLSX.utils.aoa_to_sheet(rows); ws["!cols"] = [{ wch: 70 }, { wch: 16 }];
+      XLSX.utils.book_append_sheet(wb, ws, "Tableau de répartition");
+    }
+    if (ex.journals && ex.journals.length) {
+      var jr = [];
+      ex.journals.forEach(function (j, k) {
+        if (k) jr.push([]);
+        jr.push([plain(j.title)]);
+        jr.push(["Date", "N° de compte", "Libellé", "Débit", "Crédit"]);
+        for (var i = 0; i < j.lines.length + 2; i++) jr.push(["", "", "", "", ""]);
+      });
+      var ws2 = XLSX.utils.aoa_to_sheet(jr); ws2["!cols"] = [{ wch: 12 }, { wch: 14 }, { wch: 46 }, { wch: 14 }, { wch: 14 }];
+      XLSX.utils.book_append_sheet(wb, ws2, "Écritures");
+    }
+    XLSX.writeFile(wb, "Trame_affectation_" + id + ".xlsx");
+  }
   function exerciseHTML(id, ex) {
     reg[id] = ex;
-    var h = "";
+    var h = downloadHTML(id);
     if (ex.fields && ex.fields.length) h += '<h3>Tableau de répartition</h3>' + fieldsHTML(id, ex.fields);
     (ex.journals || []).forEach(function (j) { h += journalHTML(id, j); });
     return h + uploadHTML(id);
@@ -258,7 +290,7 @@ var E = (function () {
   }
 
   return {
-    reg: reg, ACC: ACC, esc: esc, parseNum: parseNum, fmt: fmt, near: near,
+    reg: reg, docs: docs, trame: trame, ACC: ACC, esc: esc, parseNum: parseNum, fmt: fmt, near: near,
     exerciseHTML: exerciseHTML, fieldsHTML: fieldsHTML, journalHTML: journalHTML,
     checkFields: checkFields, showFields: showFields, checkJournal: checkJournal, showJournal: showJournal,
     updateTotals: updateTotals, addRow: addRow, uploadCheck: uploadCheck,

@@ -2,6 +2,11 @@
 (function () {
   "use strict";
   var PASS = 70, MOD_ID = "affectation";
+  E.docs.lt = E.docs.ltj = "lise-tailor-sarl-application-4.docx";
+  E.docs.cA = "lise-tailor-sas-application-2.docx";
+  E.docs.cB = "setak-tp.docx";
+  E.docs.cC = "sa-duke-application-2-bis.docx";
+  E.docs.cD = "sarl-delon-application-1.docx";
 
   /* ---------- petits composants ---------- */
   function mini(q, opts, ans, expl) {
@@ -211,7 +216,7 @@
       gcf("Dividende fictif et responsabilité", "<p>Distribuer sans bénéfice distribuable expose les dirigeants (délit, art. L241-3 et L242-6 du Code de commerce) et oblige les associés de mauvaise foi à restituer. Votre rôle : <strong>vérifier le calcul avant l'AGO</strong>.</p>") +
       gcf("Où retrouver l'affectation dans la liasse fiscale ?", "<p>Le tableau d'affectation du résultat figure sur l'imprimé <strong>2058-C</strong> (régime réel normal) : résultat, réserves, dividendes et report à nouveau doivent concorder avec votre tableau de répartition.</p>") +
       gcf("Acomptes sur dividendes", "<p>Versés avant l'approbation des comptes, ils exigent un <strong>bilan intermédiaire certifié</strong> faisant apparaître un bénéfice, après déduction des pertes antérieures et des réserves obligatoires. Ils s'imputent ensuite sur le dividende voté.</p>") +
-      gcf("Premier dividende et superdividende", "<p>Cas <strong>SA Delec 2000</strong> : bénéfice 900 000 € + report 70 000 € = <strong>970 000 € distribuable</strong> (la réserve légale est déjà à 10 % du capital, donc aucune dotation). L'AGO dote 200 000 € de réserve facultative, verse un <strong>premier dividende de 5 % du capital</strong> (375 000 €), puis dispose du <strong>reliquat de 395 000 €</strong> : superdividende, réserves ou report.</p>") +
+      gcf("Premier dividende et superdividende", "<p>Cas <strong>SA Delec 2000</strong> : bénéfice 900 000 € + report 70 000 € = <strong>970 000 € distribuable</strong> (la réserve légale est déjà à 10 % du capital, donc aucune dotation). L'AGO dote 200 000 € de réserve facultative, verse un <strong>premier dividende de 5 % du capital</strong> (375 000 €), puis dispose du <strong>reliquat de 395 000 €</strong> : superdividende, réserves ou report.</p><p><a class=\"btn alt\" href=\"assets/enonces/sa-delec-2000-application-3.docx\" download>⬇ Énoncé complet SA Delec 2000 (Word)</a></p>") +
       '<p class="small">Les références légales sont données à titre de repère : contrôlez-les dans votre documentation à jour avant toute utilisation professionnelle.</p>';
   } });
 
@@ -321,6 +326,7 @@
       case "show-fields": E.showFields(t.getAttribute("data-ex")); break;
       case "chk-j": E.checkJournal(t.getAttribute("data-ex"), t.getAttribute("data-jid")); break;
       case "show-j": E.showJournal(t.getAttribute("data-ex"), t.getAttribute("data-jid")); break;
+      case "trame": E.trame(t.getAttribute("data-ex")); break;
       case "add-row": E.addRow(t.getAttribute("data-j")); break;
       case "mini":
         var box = t.closest(".mini"), good = parseInt(t.getAttribute("data-i"), 10) === parseInt(box.getAttribute("data-ans"), 10), ex = box.querySelector(".ex");
